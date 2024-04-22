@@ -10,10 +10,19 @@ import java.util.List;
 @Component
 public class CarServiceImpl implements CarService {
 
+    private final CarDAO carDao;
+
     @Autowired
-    private CarDAO carDao;
+    public CarServiceImpl(CarDAO carDao) {
+        this.carDao = carDao;
+    }
 
     public List<Car> carsList (int count) {
-        return carDao.carsList(count);
+
+        if (count<5 && count>0) {
+            return carDao.carsList().subList(0, count);
+        } else {
+            return carDao.carsList();
+        }
     }
 }

@@ -18,11 +18,7 @@ public class CarDAOImpl implements CarDAO {
         cars.add (new Car ("Volvo", "XC60", 2023));
     }
 
-    public List<Car> carsList (int count) {
-        if (count<5 && count>0) {
-            return cars.subList(0, count);
-        } else {
-            return cars;
-        }
+    public List<Car> carsList () {
+        return cars;
     }
 }
